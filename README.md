@@ -12,7 +12,7 @@ INSTALLATION
   Open new migration file and copy/paste the Login Attempt migration code into it, then
   ``` ./yii migrate/up ```
 - Add the model/LoginAttempt.php file into your app.
-- Add and/or edit the controller/SiteController.php file following the example here.
+- Add and/or edit the controller/SiteController.php file following the example.
 
 Copyright (c) 2023 and beyond by [ricksmort](https://github.com/ricksmort).
 For the full copyright and license information, please view the LICENSE file that was distributed with this source code.
