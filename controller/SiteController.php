@@ -1,6 +1,9 @@
 <?php
+namespace app\controllers;
 
+use Yii;
 use yii\web\Controller;
+
 use app\models\LoginAttempt;
 
 /**
@@ -39,9 +42,14 @@ class SiteController extends Controller
 
 			$this->_ip = $userIP;
 		}
-  }
-  
-  public function actionLogin()//: yii\web\Response|string
+	}
+	
+	/**
+	* Login action.
+	* @url https://stackoverflow.com/questions/33608821/nullable-return-types-in-php7
+	* @return yii\web\Response|string
+	*/
+	public function actionLogin()//: yii\web\Response|string
 	{
 		// if logged in... go home... else...
 		$isGuest = \Yii::$app->user->isGuest;
