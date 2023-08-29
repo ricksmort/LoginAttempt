@@ -15,16 +15,26 @@ class LoginAttempt extends ActiveRecord
 	const LOGIN_ATTEMPT_LIMIT = '2';// Starts at '0' zero, '2' is (default 3 chances)
 	const BANNED_IP_EXPIRATION_TIME = '300';// Time to block/ban user in seconds '300' is (default 5 min)
 
-	public static function tableName()
+	/**
+	* TableName
+	* @url https://www.yiiframework.com/doc/api/2.0/yii-db-activerecord#tableName()-detail
+	* @return string
+	*/
+	public static function tableName(): string
 	{
 		return '{{%login_attempt}}';
 	}
 	
-	public function rules()
+	/**
+	* Rules
+	* @url https://www.yiiframework.com/doc/api/2.0/yii-base-model#rules()-detail
+	* @url https://www.yiiframework.com/doc/guide/2.0/en/tutorial-core-validators#unique
+	* @return array
+	*/
+	public function rules(): array
 	{
 		return [
 			[['created_at', 'expiration_at'], 'integer'],
-			
 			// checks if "ip_address" is a valid IPv4 or IPv6 address
 			[['ip'], 'string', 'max' => 32],
 			// checks if "ip" is a valid email address
@@ -32,6 +42,12 @@ class LoginAttempt extends ActiveRecord
 		];
 	}
 	
+	/**
+        * Before Save
+        * @url https://www.yiiframework.com/doc/api/2.0/yii-db-baseactiverecord#beforeSave()-detail
+        * @url https://www.yiiframework.com/doc/guide/2.0/en/security-authentication#implementing-identity
+        * @return boolean
+        */
 	public function beforeSave($insert): bool
 	{
 		if (!parent::beforeSave($insert)) {
