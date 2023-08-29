@@ -1,7 +1,7 @@
 <?php
 
 use yii\web\Controller;
-use app\models\security\LoginAttempt;
+use app\models\LoginAttempt;
 
 /**
 * This is a example only.
